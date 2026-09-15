@@ -2,15 +2,23 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>The Daytime Protocol | Direct-Response Sales Page</title>
-  
-  <!-- Inter / Plus Jakarta Sans fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>The Cold Approach Protocol — Stop Watching, Start Approaching</title>
+  <meta name="description" content="The field-tested daytime approach system for Indian men. 500+ real interactions, zero creepy tactics. Get her number in 2 minutes — respectfully. ₹499 instant PDF." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Cold Approach Protocol — Stop Watching, Start Approaching" />
+  <meta property="og:description" content="The field-tested daytime approach system for Indian men. 500+ real interactions. ₹499 instant PDF." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,6 +30,7 @@
           animation: {
             'glow-pulse': 'pulseGlow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             'shimmer': 'shimmer 2.2s infinite',
+            'float': 'float 3s ease-in-out infinite',
           },
           keyframes: {
             pulseGlow: {
@@ -36,6 +45,10 @@
             },
             shimmer: {
               '100%': { transform: 'translateX(100%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
             }
           }
         }
@@ -51,140 +64,721 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
+    /* Scroll-triggered fade-in */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* FAQ accordion */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+    }
+
+    /* Sticky CTA bar */
+    .sticky-cta {
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sticky-cta.show {
+      transform: translateY(0);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #34d399, #6ee7b7, #a7f3d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Section divider glow */
+    .section-glow {
+      position: relative;
+    }
+    .section-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.5), transparent);
+    }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col justify-center items-center px-4 py-8 sm:py-14 relative overflow-x-hidden selection:bg-emerald-400 selection:text-black">
+<body class="relative overflow-x-hidden selection:bg-emerald-400 selection:text-black">
 
-  <!-- Ambient High-Trust Atmospheric Lighting (Zero Distraction, Deep Focus) -->
+  <!-- ============================================ -->
+  <!-- AMBIENT BACKGROUND                           -->
+  <!-- ============================================ -->
   <div class="pointer-events-none fixed inset-0 z-0">
-    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[580px] h-[340px] sm:h-[420px] bg-emerald-500/10 rounded-full blur-[130px]"></div>
-    <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[280px] sm:w-[480px] h-[280px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] opacity-35"></div>
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[400px] sm:w-[700px] h-[400px] sm:h-[500px] bg-emerald-500/8 rounded-full blur-[150px]"></div>
+    <div class="absolute top-1/2 -left-32 w-[300px] h-[300px] bg-emerald-600/5 rounded-full blur-[120px]"></div>
+    <div class="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] h-[300px] bg-emerald-600/8 rounded-full blur-[150px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff06_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
   </div>
 
-  <!-- Ultra-Minimal Conversion Canvas (Fits in 1-2 Mobile Screens) -->
-  <main class="w-full max-w-xl mx-auto relative z-10 flex flex-col items-center text-center">
 
-    <!-- 1. The Pre-Headline (Identifies exact target audience) -->
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 mb-5 sm:mb-6">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-      <p class="text-xs sm:text-sm font-semibold tracking-wider text-emerald-300 uppercase">
-        For Young Men In India (Ages 16–35) Tired Of Broken Dating Apps
-      </p>
-    </div>
+  <!-- ============================================ -->
+  <!-- SECTION 1: HERO                              -->
+  <!-- ============================================ -->
+  <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 pt-12 pb-16 sm:pt-20 sm:pb-24">
+    <div class="w-full max-w-2xl mx-auto flex flex-col items-center text-center">
 
-    <!-- 2. The Big Promise (Headline) -->
-    <h1 class="text-3xl sm:text-[42px] md:text-5xl font-extrabold tracking-tight text-white leading-[1.14] sm:leading-[1.12] mb-4 sm:mb-5">
-      Approach Any Woman In India With Respect, Spark Real Attraction, And Walk Away With Her Number.
-    </h1>
-
-    <!-- 3. The Proof / Sub-headline -->
-    <p class="text-base sm:text-lg font-medium text-zinc-300 max-w-lg mb-7 sm:mb-9 leading-relaxed">
-      Tested across 500+ real-world interactions in Indian metros: If this calibrated daytime framework doesn’t eliminate your approach anxiety in 7 days, you pay nothing.
-    </p>
-
-    <!-- 4. The "What You Get" Bullets (Core secrets inside the book) -->
-    <div class="w-full space-y-3 sm:space-y-3.5 mb-8 sm:mb-10 text-left">
-      
-      <!-- Bullet 1 -->
-      <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 shadow-sm backdrop-blur-md">
-        <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p class="text-sm sm:text-[15px] text-zinc-200 leading-snug">
-          <strong class="text-white font-semibold">The 3-Second Disarm Method:</strong> The exact tonality, eye contact, and opener that disarms defensive guards and makes an Indian woman feel safe and respected within seconds.
-        </p>
-      </div>
-
-      <!-- Bullet 2 -->
-      <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 shadow-sm backdrop-blur-md">
-        <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p class="text-sm sm:text-[15px] text-zinc-200 leading-snug">
-          <strong class="text-white font-semibold">The Anti-Creep Diagnostic:</strong> The 3 subtle body language blunders that trigger instant suspicion, and the posture adjustment that projects calm, high-value masculine certainty.
-        </p>
-      </div>
-
-      <!-- Bullet 3 -->
-      <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 shadow-sm backdrop-blur-md">
-        <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p class="text-sm sm:text-[15px] text-zinc-200 leading-snug">
-          <strong class="text-white font-semibold">The 2-Minute Number Close:</strong> How to transition from a brief daytime conversation to locking in her WhatsApp or Instagram smoothly—without lingering or awkward pressure.
-        </p>
-      </div>
-
-      <!-- Bullet 4 -->
-      <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 shadow-sm backdrop-blur-md">
-        <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p class="text-sm sm:text-[15px] text-zinc-200 leading-snug">
-          <strong class="text-white font-semibold">The Indian Metro Blueprint:</strong> Direct approach playbook tailored for real-world scenarios—cafes, bookstores, metro stations, and corporate parks across Delhi, Mumbai, and Bangalore.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- 5. The ONLY Action (Connected directly to Razorpay Payment Page) -->
-    <div class="w-full flex flex-col items-center">
-      <a 
-        id="buyButton"
-        href="https://rzp.io/l/cold-approach-protocol" 
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group relative w-full inline-flex items-center justify-center overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 sm:py-5 text-xl sm:text-2xl font-black tracking-tight text-black transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] animate-glow-pulse"
-      >
-        <!-- Dynamic Button Shimmer Highlight -->
-        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/45 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></span>
-
-        <!-- CTA Label -->
-        <span class="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
-          Get Immediate Access — ₹499
-          <svg class="w-6 h-6 stroke-current transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
+      <!-- Pre-headline: Instagram credibility badge -->
+      <a href="https://www.instagram.com/harshalghaware.02/" target="_blank" rel="noopener noreferrer"
+         class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 border border-zinc-700/60 hover:border-emerald-500/40 transition-colors mb-6 sm:mb-8 group">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs sm:text-sm font-semibold text-zinc-300 group-hover:text-emerald-300 transition-colors">
+          From <span class="text-white">@harshalghaware.02</span> — 58K+ followers
         </span>
+        <svg class="w-3.5 h-3.5 text-zinc-500 group-hover:text-emerald-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
       </a>
 
-      <!-- Friction-Removing Trust Indicators -->
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm font-medium text-zinc-400">
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-          Instant PDF Download
-        </span>
-        <span class="text-zinc-600 hidden sm:inline">•</span>
-        <span>Razorpay Secure (UPI, Cards, NetBanking)</span>
-        <span class="text-zinc-600 hidden sm:inline">•</span>
-        <span class="text-emerald-400 font-semibold">100% Money-Back Guarantee</span>
+      <!-- Main Headline -->
+      <h1 class="reveal text-[28px] sm:text-[44px] md:text-[52px] font-black tracking-tight text-white leading-[1.12] mb-5 sm:mb-6">
+        Stop Watching Other Guys Talk to Girls.<br class="hidden sm:inline" />
+        <span class="gradient-text">Become the Guy Who Actually Does It.</span>
+      </h1>
+
+      <!-- Subheadline — pain-point driven -->
+      <p class="reveal text-base sm:text-lg md:text-xl font-medium text-zinc-300 max-w-xl mb-8 sm:mb-10 leading-relaxed">
+        You've seen it in his reels — a random guy walks up to a girl in broad daylight, says something simple, and walks away with her number. You thought <em class="text-white not-italic font-semibold">"I could never do that."</em>
+        <br class="hidden sm:inline" /><br class="hidden sm:inline" />
+        <span class="text-zinc-400">You're wrong. You just don't have a system yet.</span>
+      </p>
+
+      <!-- Primary CTA -->
+      <div class="reveal w-full max-w-md flex flex-col items-center">
+        <a
+          href="https://rzp.io/l/cold-approach-protocol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button group relative w-full inline-flex items-center justify-center overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 sm:py-5 text-lg sm:text-xl font-black tracking-tight text-black transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] animate-glow-pulse"
+        >
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></span>
+          <span class="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
+            Get The Protocol — ₹499
+            <svg class="w-5 h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </a>
+
+        <!-- Trust row -->
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm font-medium text-zinc-500">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Instant PDF Download
+          </span>
+          <span class="text-zinc-700 hidden sm:inline">•</span>
+          <span>Razorpay Secure</span>
+          <span class="text-zinc-700 hidden sm:inline">•</span>
+          <span class="text-emerald-400 font-semibold">100% Money-Back</span>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="mt-12 sm:mt-16 animate-float">
+        <svg class="w-5 h-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </div>
     </div>
+  </section>
 
-  </main>
 
+  <!-- ============================================ -->
+  <!-- SECTION 2: PROBLEM — "Sound Familiar?"       -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <div class="text-center mb-10 sm:mb-14">
+        <p class="reveal text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">Be honest with yourself</p>
+        <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white">Sound Familiar?</h2>
+      </div>
+
+      <div class="space-y-3.5 sm:space-y-4">
+
+        <!-- Pain point 1 -->
+        <div class="reveal reveal-delay-1 flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <span class="text-2xl flex-shrink-0 mt-0.5">😶</span>
+          <div>
+            <p class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+              <strong class="text-white">You see a cute girl at a café.</strong> You want to say something. Your heart starts racing. You think about it for 10 minutes… then she leaves. And you hate yourself for the rest of the day.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain point 2 -->
+        <div class="reveal reveal-delay-2 flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <span class="text-2xl flex-shrink-0 mt-0.5">📱</span>
+          <div>
+            <p class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+              <strong class="text-white">Dating apps are a dead end.</strong> You get 2 matches a week — both bots. You've tried Hinge, Bumble, Tinder. Nothing works when you're competing against 10,000 other guys behind a screen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain point 3 -->
+        <div class="reveal reveal-delay-3 flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <span class="text-2xl flex-shrink-0 mt-0.5">🎬</span>
+          <div>
+            <p class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+              <strong class="text-white">You've watched 100+ approach videos on YouTube.</strong> You know the theory. You've seen Harshal do it. But when it's <em>your</em> turn — blank. You don't know what to say, how to stand, or when to ask for her number.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain point 4 -->
+        <div class="reveal reveal-delay-4 flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <span class="text-2xl flex-shrink-0 mt-0.5">🪞</span>
+          <div>
+            <p class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+              <strong class="text-white">You're not ugly. You're not boring.</strong> You just don't have a repeatable system that works in Indian cities, with Indian women, in the daytime — without being creepy or cringe.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Transition line -->
+      <div class="reveal mt-10 sm:mt-14 text-center">
+        <p class="text-base sm:text-lg font-semibold text-zinc-300 max-w-lg mx-auto leading-relaxed">
+          It's not your confidence that's broken.
+          <br />
+          <span class="text-emerald-400 font-bold">You just don't have a system.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: THE SOLUTION                      -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <div class="text-center mb-10 sm:mb-14">
+        <p class="reveal text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">The System</p>
+        <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
+          The Cold Approach Protocol
+        </h2>
+        <p class="reveal text-sm sm:text-base text-zinc-400 max-w-lg mx-auto leading-relaxed">
+          A step-by-step daytime approach playbook built from <strong class="text-zinc-200">500+ real-world interactions</strong> across Indian metros. No fluff. No theory. Just the exact moves — from opening your mouth to walking away with her number.
+        </p>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="reveal grid grid-cols-3 gap-3 sm:gap-4 mb-10 sm:mb-14">
+        <div class="text-center p-3 sm:p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/60">
+          <p class="text-xl sm:text-2xl font-black text-emerald-400">500+</p>
+          <p class="text-[10px] sm:text-xs text-zinc-500 font-medium uppercase tracking-wider mt-1">Field-Tested Interactions</p>
+        </div>
+        <div class="text-center p-3 sm:p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/60">
+          <p class="text-xl sm:text-2xl font-black text-emerald-400">50+</p>
+          <p class="text-[10px] sm:text-xs text-zinc-500 font-medium uppercase tracking-wider mt-1">Pages of Tactics</p>
+        </div>
+        <div class="text-center p-3 sm:p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/60">
+          <p class="text-xl sm:text-2xl font-black text-emerald-400">4</p>
+          <p class="text-[10px] sm:text-xs text-zinc-500 font-medium uppercase tracking-wider mt-1">Core Frameworks</p>
+        </div>
+      </div>
+
+      <!-- 4 Framework Modules -->
+      <div class="space-y-3.5 sm:space-y-4">
+
+        <!-- Module 1 -->
+        <div class="reveal reveal-delay-1 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm">1</div>
+            <h3 class="text-base sm:text-lg font-bold text-white">The 3-Second Disarm Method</h3>
+          </div>
+          <p class="text-sm text-zinc-400 leading-relaxed pl-11">
+            The exact opening line, eye contact angle, and vocal tonality that makes a woman feel safe and curious within seconds — not threatened. This is the difference between "charming stranger" and "creepy guy."
+          </p>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="reveal reveal-delay-2 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm">2</div>
+            <h3 class="text-base sm:text-lg font-bold text-white">The Anti-Creep Diagnostic</h3>
+          </div>
+          <p class="text-sm text-zinc-400 leading-relaxed pl-11">
+            3 body language mistakes that instantly trigger suspicion — and the simple posture reset that projects calm, grounded masculine energy. Most guys do all 3 without realising it.
+          </p>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="reveal reveal-delay-3 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm">3</div>
+            <h3 class="text-base sm:text-lg font-bold text-white">The 2-Minute Number Close</h3>
+          </div>
+          <p class="text-sm text-zinc-400 leading-relaxed pl-11">
+            How to smoothly transition from "Hi, I just had to say something" to getting her WhatsApp or Instagram — without awkward pauses, desperate energy, or overstaying your welcome.
+          </p>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="reveal reveal-delay-4 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm">4</div>
+            <h3 class="text-base sm:text-lg font-bold text-white">The Indian Metro Blueprint</h3>
+          </div>
+          <p class="text-sm text-zinc-400 leading-relaxed pl-11">
+            Location-specific playbooks for cafés, bookstores, malls, metro stations, and college areas across Delhi, Mumbai, Bangalore, and Pune. What works in Connaught Place doesn't always work in Koramangala — this covers both.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: SOCIAL PROOF                      -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <div class="text-center mb-10 sm:mb-14">
+        <p class="reveal text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">Real Results</p>
+        <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Guys Like You Are Already Doing It
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- Testimonial 1 -->
+        <div class="reveal reveal-delay-1 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">R</div>
+            <div>
+              <p class="text-sm font-bold text-white">Rohan, 22</p>
+              <p class="text-xs text-zinc-500">Mumbai</p>
+            </div>
+            <div class="ml-auto flex gap-0.5">
+              <span class="text-emerald-400 text-xs">★★★★★</span>
+            </div>
+          </div>
+          <p class="text-sm text-zinc-300 leading-relaxed italic">
+            "Bro, I genuinely got 3 numbers in my first week. The 3-Second Disarm thing actually works — I used it at a Starbucks in Bandra and the girl was smiling within 5 seconds. I never thought I could do this."
+          </p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="reveal reveal-delay-2 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">A</div>
+            <div>
+              <p class="text-sm font-bold text-white">Arjun, 19</p>
+              <p class="text-xs text-zinc-500">Delhi</p>
+            </div>
+            <div class="ml-auto flex gap-0.5">
+              <span class="text-emerald-400 text-xs">★★★★★</span>
+            </div>
+          </div>
+          <p class="text-sm text-zinc-300 leading-relaxed italic">
+            "I was the guy who watched every single approach video on YouTube for 2 years and never went up to a girl. Read this guide on a Tuesday night, approached a girl at Connaught Place on Wednesday. Got her Instagram. We went on a date that Saturday. Unreal."
+          </p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="reveal reveal-delay-3 p-5 sm:p-6 rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">V</div>
+            <div>
+              <p class="text-sm font-bold text-white">Vikram, 27</p>
+              <p class="text-xs text-zinc-500">Bangalore</p>
+            </div>
+            <div class="ml-auto flex gap-0.5">
+              <span class="text-emerald-400 text-xs">★★★★★</span>
+            </div>
+          </div>
+          <p class="text-sm text-zinc-300 leading-relaxed italic">
+            "The Anti-Creep Diagnostic blew my mind. I was literally doing all 3 mistakes — hovering, hands in pockets, breaking eye contact downward. Fixed them, and my very next approach felt completely different. She didn't flinch. She actually leaned in."
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: WHO IS THIS FOR?                  -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <div class="text-center mb-10 sm:mb-14">
+        <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white">Is This For You?</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+
+        <!-- YES column -->
+        <div class="reveal reveal-delay-1 p-5 sm:p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 backdrop-blur-md">
+          <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            This is for you if…
+          </h3>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 mt-0.5 flex-shrink-0">✓</span>
+              <span>You want to meet women <strong class="text-white">in real life</strong>, not behind a screen</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 mt-0.5 flex-shrink-0">✓</span>
+              <span>You've felt <strong class="text-white">approach anxiety</strong> and want a proven way to beat it</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 mt-0.5 flex-shrink-0">✓</span>
+              <span>You value being <strong class="text-white">respectful</strong> — no manipulation, no PUA garbage</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 mt-0.5 flex-shrink-0">✓</span>
+              <span>You live in an <strong class="text-white">Indian city</strong> and want tactics that work here, not imported Western advice</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- NO column -->
+        <div class="reveal reveal-delay-2 p-5 sm:p-6 rounded-2xl bg-red-500/5 border border-red-500/15 backdrop-blur-md">
+          <h3 class="text-sm font-bold text-red-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            This is NOT for you if…
+          </h3>
+          <ul class="space-y-3 text-sm text-zinc-400">
+            <li class="flex items-start gap-2.5">
+              <span class="text-red-400/70 mt-0.5 flex-shrink-0">✗</span>
+              <span>You're looking for manipulation tricks or "pickup lines" that disrespect women</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-red-400/70 mt-0.5 flex-shrink-0">✗</span>
+              <span>You want a magic pill — this requires you to actually go outside and <em>practice</em></span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: PRICING                           -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-xl mx-auto text-center">
+
+      <p class="reveal text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">One-Time Investment</p>
+      <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-6">
+        Less Than a Movie Date.<br />More Than a Year of YouTube.
+      </h2>
+
+      <!-- Value anchor card -->
+      <div class="reveal p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-zinc-800/70 backdrop-blur-md mb-8">
+
+        <div class="space-y-3 text-left mb-6">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-zinc-400">1-on-1 dating coaching session</span>
+            <span class="text-zinc-500 line-through">₹3,000 – ₹5,000</span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-zinc-400">Cold approach bootcamp (2 days)</span>
+            <span class="text-zinc-500 line-through">₹15,000+</span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-zinc-400">Years of trial-and-error + rejection</span>
+            <span class="text-zinc-500 line-through">Priceless</span>
+          </div>
+          <div class="border-t border-zinc-800 my-3"></div>
+          <div class="flex items-center justify-between">
+            <span class="text-white font-bold text-base">The Cold Approach Protocol</span>
+            <div class="text-right">
+              <span class="text-3xl sm:text-4xl font-black text-emerald-400">₹499</span>
+              <span class="block text-xs text-zinc-500 mt-0.5">one-time · lifetime access</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA button -->
+        <a
+          href="https://rzp.io/l/cold-approach-protocol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button group relative w-full inline-flex items-center justify-center overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 sm:py-5 text-lg sm:text-xl font-black tracking-tight text-black transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] animate-glow-pulse"
+        >
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></span>
+          <span class="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
+            Get Immediate Access — ₹499
+            <svg class="w-5 h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </a>
+
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-medium text-zinc-500">
+          <span>UPI · Cards · NetBanking</span>
+          <span class="text-zinc-700">•</span>
+          <span class="text-emerald-400 font-semibold">100% Money-Back Guarantee</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 7: FAQ                               -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 py-16 sm:py-24 section-glow">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <div class="text-center mb-10 sm:mb-14">
+        <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Common Questions
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-container">
+
+        <!-- FAQ 1 -->
+        <div class="reveal reveal-delay-1 faq-item rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left">
+            <span class="text-sm sm:text-[15px] font-semibold text-white pr-4">"Will this work in my city? I don't live in Mumbai or Delhi."</span>
+            <svg class="faq-chevron w-5 h-5 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5">
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Yes. The core principles — eye contact, tonality, body language, reading signals — are universal. The guide includes location-specific tactics for metros (Delhi, Mumbai, Bangalore, Pune), but the framework works in any Indian city. Guys from Jaipur, Hyderabad, Lucknow, and Chandigarh have used it successfully.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="reveal reveal-delay-2 faq-item rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left">
+            <span class="text-sm sm:text-[15px] font-semibold text-white pr-4">"I'm really introverted. Can I still do this?"</span>
+            <svg class="faq-chevron w-5 h-5 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5">
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              This was literally built for introverts. You don't need to be loud, funny, or the life of the party. The system works with calm, quiet energy — in fact, that's what makes it feel genuine. The 3-Second Disarm Method is specifically designed for guys who aren't naturally extroverted.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="reveal reveal-delay-3 faq-item rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left">
+            <span class="text-sm sm:text-[15px] font-semibold text-white pr-4">"Is this ethical? I don't want to do anything disrespectful."</span>
+            <svg class="faq-chevron w-5 h-5 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5">
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              100%. This is a consent-first, respect-first framework. There are no manipulation tactics, no "negging," no PUA garbage. The entire philosophy is: make her feel safe, be genuine, and if she's not interested, walk away gracefully. That's it. Respecting boundaries isn't optional — it's the foundation.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="reveal reveal-delay-4 faq-item rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left">
+            <span class="text-sm sm:text-[15px] font-semibold text-white pr-4">"When do I get access after paying?"</span>
+            <svg class="faq-chevron w-5 h-5 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5">
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Instantly. As soon as your payment goes through (UPI, Card, or NetBanking via Razorpay), you'll be redirected to the download page. The PDF is saved to your phone or laptop immediately. No waiting, no emails, no "check your inbox."
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="reveal faq-item rounded-2xl bg-zinc-950/70 border border-zinc-800/70 backdrop-blur-md overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 sm:p-5 text-left">
+            <span class="text-sm sm:text-[15px] font-semibold text-white pr-4">"What if it doesn't work for me?"</span>
+            <svg class="faq-chevron w-5 h-5 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer px-4 sm:px-5 pb-4 sm:pb-5">
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              You're covered by a <strong class="text-emerald-400">100% money-back guarantee</strong>. If you read the guide and genuinely feel it didn't help, reach out and you'll get a full refund. No questions asked. The risk is entirely on us.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 8: FINAL CTA                         -->
+  <!-- ============================================ -->
+  <section class="relative z-10 px-4 pt-16 pb-24 sm:pt-24 sm:pb-32 section-glow">
+    <div class="w-full max-w-xl mx-auto text-center">
+
+      <h2 class="reveal text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+        The Next Girl You See Could Be<br class="hidden sm:inline" />
+        <span class="gradient-text">The One You Actually Talk To.</span>
+      </h2>
+
+      <p class="reveal text-sm sm:text-base text-zinc-400 max-w-md mx-auto mb-8 leading-relaxed">
+        You've scrolled this far because something resonated. Don't close this tab and go back to watching approach videos from the sidelines. This is your move.
+      </p>
+
+      <div class="reveal w-full max-w-md mx-auto">
+        <a
+          href="https://rzp.io/l/cold-approach-protocol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button group relative w-full inline-flex items-center justify-center overflow-hidden rounded-2xl bg-emerald-500 px-7 py-4 sm:py-5 text-lg sm:text-xl font-black tracking-tight text-black transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] animate-glow-pulse"
+        >
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></span>
+          <span class="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
+            Get The Protocol — ₹499
+            <svg class="w-5 h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-16 pt-8 border-t border-zinc-900">
+        <p class="text-xs text-zinc-600">
+          Questions? Reach out at <a href="mailto:support@advaitgame.online" class="text-zinc-500 hover:text-emerald-400 underline underline-offset-2 transition-colors">support@advaitgame.online</a>
+        </p>
+        <p class="text-xs text-zinc-700 mt-2">
+          © 2025 The Cold Approach Protocol. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- STICKY MOBILE CTA BAR                        -->
+  <!-- ============================================ -->
+  <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-zinc-950/95 backdrop-blur-xl border-t border-zinc-800/80 px-4 py-3 safe-area-bottom">
+    <a
+      href="https://rzp.io/l/cold-approach-protocol"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3.5 text-base font-black tracking-tight text-black transition-all duration-200 hover:bg-emerald-400 active:scale-[0.98]"
+    >
+      <span class="flex items-center justify-center gap-2 uppercase tracking-wide">
+        Get The Protocol — ₹499
+        <svg class="w-4.5 h-4.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </span>
+    </a>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- SCRIPTS                                      -->
+  <!-- ============================================ -->
   <script>
     // ==========================================
-    // RAZORPAY CONFIGURATION
+    // Scroll-triggered reveal animations
     // ==========================================
-    // Replace this with your actual Razorpay Payment Page URL from dashboard.razorpay.com
-    const RAZORPAY_PAYMENT_PAGE_URL = 'https://rzp.io/l/cold-approach-protocol';
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-    const buyButton = document.getElementById('buyButton');
-    if (buyButton && RAZORPAY_PAYMENT_PAGE_URL) {
-      buyButton.href = RAZORPAY_PAYMENT_PAGE_URL;
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+    // ==========================================
+    // Sticky CTA bar — show after scrolling past hero
+    // ==========================================
+    const stickyCta = document.getElementById('stickyCta');
+    const heroSection = document.getElementById('hero');
+
+    if (stickyCta && heroSection) {
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            stickyCta.classList.add('show');
+          } else {
+            stickyCta.classList.remove('show');
+          }
+        });
+      }, { threshold: 0.05 });
+
+      stickyObserver.observe(heroSection);
+    }
+
+
+    // ==========================================
+    // FAQ accordion
+    // ==========================================
+    function toggleFaq(button) {
+      const item = button.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all other items
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove('open');
+      });
+
+      // Toggle current item
+      item.classList.toggle('open', !isOpen);
     }
   </script>
 
